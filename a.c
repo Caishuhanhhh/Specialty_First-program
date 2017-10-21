@@ -1,46 +1,46 @@
-// ÃÜÂëÏä¹¦ÄÜ  ±¾µØ¶Ë´¢´æÃÜÂë ²éÕÒÃÜÂë  ¼ÓÃÜËã·¨Ôİ¶¨MD5  
-// °æ±¾ 1.0 cmd½çÃæ ĞÂ°æ±¾´ı¶¨
-// ÖÆ×÷ ²ÌÊéº­
+// å¯†ç ç®±åŠŸèƒ½  æœ¬åœ°ç«¯å‚¨å­˜å¯†ç  æŸ¥æ‰¾å¯†ç   
+// ç‰ˆæœ¬ 1.0 
+// åˆ¶ä½œ è”¡
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #define  SIZE 30
-struct box_type//½á¹¹ÌåÓÃÀ´´¢´æËùÓĞÊı¾İ
+struct box_type//ç»“æ„ä½“ç”¨æ¥å‚¨å­˜æ‰€æœ‰æ•°æ®
 {
-   char name[15];//ÕÊºÅÃÜÂëµÄµ¥Î»
-   char mun[15];//ÓÃ»§Ãû
-   char power[15];//ÃÜÂë
+   char name[15];//å¸å·å¯†ç çš„å•ä½
+   char mun[15];//ç”¨æˆ·å
+   char power[15];//å¯†ç 
 };
 struct box_type munber[SIZE];
 FILE *fp;
-char munstr[20];//»º³åÊı×é
+char munstr[20];//ç¼“å†²æ•°ç»„
 int n=0;
 void menu();//
-void function1();//ĞÂ½¨
-void function2();//Êä³ö
-void function3();//²éÕÒ
-void function4();//ĞŞ¸Ä
-void function5();//É¾³ı
-void function6();//ÍË³ö
-void function0();//¹ØÓÚ
+void function1();//æ–°å»º
+void function2();//è¾“å‡º
+void function3();//æŸ¥æ‰¾
+void function4();//ä¿®æ”¹
+void function5();//åˆ é™¤
+void function6();//é€€å‡º
+void function0();//å…³äº
 void main()
 {
     system("color  0A");
 	menu();
 }
-void menu()//²Ëµ¥º¯Êı
+void menu()//èœå•å‡½æ•°
 {
-    char choice;//Ñ¡Ïî
+    char choice;//é€‰é¡¹
 	printf("\n        -------------------------------------------------------------\n");
-	printf("\n            *************   µ¥»ú°æ£¬¾Ü¾øĞÅÏ¢Ğ¹Â©   **************\n");
-	printf("\n            ***1.ĞÂ½¨Ò»¸öÃÜÂë¼ÇÂ¼***    ***2.Êä³öÒ»¸öÃÜÂë¼ÇÂ¼***     \n");
-	printf("\n            ***3.²éÕÒÒ»¸öÃÜÂë¼ÇÂ¼***    ***4.¸üĞÂÒ»¸öÃÜÂë¼ÇÂ¼***      \n");
-	printf("\n            ***5.É¾³ıÒ»¸öÃÜÂë¼ÇÂ¼***    ***6.ÍË³öÃÜÂëÏä³ÌĞò*****       \n");
-	printf("\n                               *****0.¹ØÓÚ*****                       \n");
-	printf("\n            *************Ö§³ÖÖĞÎÄ¡¢Ó¢ÎÄ×Ö·ûÇë²»Òª³¬³ö15Î»************    \n");
+	printf("\n            *************   å•æœºç‰ˆï¼Œæ‹’ç»ä¿¡æ¯æ³„æ¼   **************\n");
+	printf("\n            ***1.æ–°å»ºä¸€ä¸ªå¯†ç è®°å½•***    ***2.è¾“å‡ºä¸€ä¸ªå¯†ç è®°å½•***     \n");
+	printf("\n            ***3.æŸ¥æ‰¾ä¸€ä¸ªå¯†ç è®°å½•***    ***4.æ›´æ–°ä¸€ä¸ªå¯†ç è®°å½•***      \n");
+	printf("\n            ***5.åˆ é™¤ä¸€ä¸ªå¯†ç è®°å½•***    ***6.é€€å‡ºå¯†ç ç®±ç¨‹åº*****       \n");
+	printf("\n                               *****0.å…³äº*****                       \n");
+	printf("\n            *************æ”¯æŒä¸­æ–‡ã€è‹±æ–‡å­—ç¬¦è¯·ä¸è¦è¶…å‡º15ä½************    \n");
 	printf("\n      ------------------------------------------------------------------\n");
-	choice=getchar();getchar();//»ñÈ¡Ñ¡Ïî ºóÕßÓÃÓÚ¶ÁÈ¡»Ø³µ
-	switch(choice)//Ñ¡Ïîµ÷ÓÃ×Óº¯Êı
+	choice=getchar();getchar();//è·å–é€‰é¡¹ åè€…ç”¨äºè¯»å–å›è½¦
+	switch(choice)//é€‰é¡¹è°ƒç”¨å­å‡½æ•°
 	{
 	   case'1':function1();break;
 	   case'2':function2();break;
@@ -58,20 +58,20 @@ void function1()
   n=0;
   if((fp=fopen("powerbox.txt","wb"))==NULL)
   {
-    printf("ÎŞ·¨´ò¿ªpowerbox.txtÎÄ¼ş\n");
+    printf("æ— æ³•æ‰“å¼€powerbox.txtæ–‡ä»¶\n");
 	exit(0);
   }
-  printf("ÇëĞÂ½¨: ");
+  printf("è¯·æ–°å»º: ");
 	  for (n=0;n<=SIZE;)
 	  {
-		  printf("\n ÕâÊÇµÚ%dÌõÃÜÂë¼ÇÂ¼:\n ¼üÈëµ¥Î»: ",n+1);
+		  printf("\n è¿™æ˜¯ç¬¬%dæ¡å¯†ç è®°å½•:\n é”®å…¥å•ä½: ",n+1);
 		  gets(munber[n].name);
-		  printf("\n ÇëÊäÈëÓÃ»§Ãû: ");
+		  printf("\n è¯·è¾“å…¥ç”¨æˆ·å: ");
 		  gets(munber[n].mun);
-		  printf("\n ÇëÊäÈëÃÜÂë:   ");
+		  printf("\n è¯·è¾“å…¥å¯†ç :   ");
 		  gets(munber[n].power);
 		  n++;
-		  printf("ÊÇ·ñ½áÊø¼ÇÂ¼ÊäÈë: (Y/N)\n");
+		  printf("æ˜¯å¦ç»“æŸè®°å½•è¾“å…¥: (Y/N)\n");
 		  ch=getchar();getchar();
 		  if (ch=='Y')
 	      break;
@@ -87,10 +87,10 @@ void function2()
   n=0;
   if ((fp=fopen("powerbox.txt","rb"))==NULL)
   {
-	  printf("ÎŞ·¨´ò¿ªpowerbox.txtÎÄ¼ş\n");
+	  printf("æ— æ³•æ‰“å¼€powerbox.txtæ–‡ä»¶\n");
 	  exit(0);
   }
-  printf("-          µ¥Î»           ÓÃ»§Ãû           ÃÜÂë-\n");
+  printf("-          å•ä½           ç”¨æˆ·å           å¯†ç -\n");
   while(fread(&munber[n],sizeof(munber[n]),1,fp)==1)
   {
       printf("%15s%18s%18s\n",munber[n].name,munber[n].mun,munber[n].power);
@@ -103,19 +103,19 @@ void function3()
    int a=0;char ch;n=0;
    if((fp=fopen("powerbox.txt","rb"))==NULL)
    {
-       printf("ÎŞ·¨´ò¿ªpowerbox.txtÎÄ¼ş\n");
+       printf("æ— æ³•æ‰“å¼€powerbox.txtæ–‡ä»¶\n");
 	   exit(0);
    }
    while(fread(&munber[n],sizeof(munber[n]),1,fp)==1)
    n++;
    a=n;
-   printf("ÇëÑ¡Ôñ²éÕÒ·½Ê½£º\n");
-   printf("***1.µ¥Î»***2.ÓÃ»§Ãû***\n");
+   printf("è¯·é€‰æ‹©æŸ¥æ‰¾æ–¹å¼ï¼š\n");
+   printf("***1.å•ä½***2.ç”¨æˆ·å***\n");
    ch=getchar();getchar();
    switch(ch)
    {
    case'1':
-	   printf("ÇëÊäÈëÄãÒªËÑË÷µÄµ¥Î»Ãû³Æ£º\n");
+	   printf("è¯·è¾“å…¥ä½ è¦æœç´¢çš„å•ä½åç§°ï¼š\n");
 	   gets(munstr);
 	   for (n=0;n<a;)
 	   {
@@ -128,7 +128,7 @@ void function3()
 	     break;
    
    case'2':
-	   printf("ÇëÊäÈëÄãÒªËÑË÷µÄÓÃ»§Ãû£º \n");
+	   printf("è¯·è¾“å…¥ä½ è¦æœç´¢çš„ç”¨æˆ·åï¼š \n");
 	   gets(munstr);
 	   for (n=0;n<a;)
 	   {
@@ -138,37 +138,37 @@ void function3()
 	   }
 	   break;
    }
-printf("-          µ¥Î»            ÓÃ»§Ãû          ÃÜÂë-\n");
+printf("-          å•ä½            ç”¨æˆ·å          å¯†ç -\n");
 printf("%15s%18s%18s%\n",munber[n].name,munber[n].mun,munber[n].power);
 fclose(fp);
 }
 void function4()
 {
     char ch;int i;
-	printf("ÄúÒªĞŞ¸ÄÄÄÌõ¼ÇÂ¼?\n");
+	printf("æ‚¨è¦ä¿®æ”¹å“ªæ¡è®°å½•?\n");
 	function3();
 	i=0;
 	if ((fp=fopen("powerbox.txt","rb+"))==NULL)
 	{
-		printf("ÎŞ·¨´ò¿ªpowerbox.txt\n");
+		printf("æ— æ³•æ‰“å¼€powerbox.txt\n");
 		exit(0);
 	}
 	while(fread(&munber[i],sizeof(munber[i]),1,fp)==1)
 	i++;
-	printf("ÄúÏëĞŞ¸ÄÄÄÒ»¸öÎ»ÖÃ£¿\n");
-	printf("***1.µ¥Î»***2.ÓÃ»§Ãû***3.ÃÜÂë***");
+	printf("æ‚¨æƒ³ä¿®æ”¹å“ªä¸€ä¸ªä½ç½®ï¼Ÿ\n");
+	printf("***1.å•ä½***2.ç”¨æˆ·å***3.å¯†ç ***");
 	ch=getchar();getchar();
 	switch(ch)
 	{
-	   case'1':printf("ÇëÊäÈëĞÂµÄµ¥Î»£º\n");
+	   case'1':printf("è¯·è¾“å…¥æ–°çš„å•ä½ï¼š\n");
 	   gets(munber[n].name);
 	   printf("%s\n",munber[n].name);
 	   break;
-	   case'2':printf("ÇëÊäÈëĞÂµÄÓÃ»§Ãû£º\n");
+	   case'2':printf("è¯·è¾“å…¥æ–°çš„ç”¨æˆ·åï¼š\n");
 	   gets(munber[n].mun);
 	   printf("%s\n",munber[n].mun);
 	   break;
-	   case'3':printf("ÇëÊäÈëĞÂµÄÃÜÂë£º\n");
+	   case'3':printf("è¯·è¾“å…¥æ–°çš„å¯†ç ï¼š\n");
 	   gets(munber[n].power);
 	   printf("%s\n",munber[n].power);
 	   break;
@@ -183,11 +183,11 @@ void function4()
     void function5()
 	{
 	    int  i=0;int a=0;
-		printf("Èç¹ûÄúÒªÉ¾³ı¼ÇÂ¼£¬ÇëÏÈ²éÕÒËùÒªÉ¾³ıµÄÄÚÈİ\n");
+		printf("å¦‚æœæ‚¨è¦åˆ é™¤è®°å½•ï¼Œè¯·å…ˆæŸ¥æ‰¾æ‰€è¦åˆ é™¤çš„å†…å®¹\n");
 		function3();
 		if ((fp=fopen("powerbox.txt","rb+"))==NULL)
 		{
-			printf("ÎŞ·¨´ò¿ªpowerbox.txtÎÄ¼ş\n");
+			printf("æ— æ³•æ‰“å¼€powerbox.txtæ–‡ä»¶\n");
 			exit(0);
 		}
 		while(fread(&munber[n],sizeof(munber[0]),1,fp)==1)
@@ -202,8 +202,8 @@ void function4()
    
 	void function0()
 	{
-		printf("\n       --------------------ÖÆ×÷ É½¶« ×Í²© ²ÌÊéº­---------------------\n");
-		printf("\n       ---------------------ÃÜÂëÎŞ¼Û£¬Çë½÷É÷±£´æ----------------------\n");
-		printf("\n                V1.0°æ±¾ ºó¼Ì°æ±¾ÇëÁªÏµ 749916276@qq.com             \n");
+		printf("\n       --------------------åˆ¶ä½œ å±±ä¸œ xx xxxxxx---------------------\n");
+		printf("\n       ---------------------å¯†ç æ— ä»·ï¼Œè¯·è°¨æ…ä¿å­˜----------------------\n");
+		printf("\n                V1.0ç‰ˆæœ¬ åç»§ç‰ˆæœ¬è¯·è”ç³» ***********@qq.com             \n");
 	    menu();
 	}
